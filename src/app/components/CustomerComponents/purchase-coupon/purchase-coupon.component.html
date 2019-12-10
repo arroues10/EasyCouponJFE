@@ -1,0 +1,10 @@
+<a class="topRight" routerLink="/customer-page"><img width=50px src="/assets/images/logoBack.png"></a>
+
+<form #formInfo="ngForm">
+    <input required pattern="^\d+$" class="form-control" #couponIdInfo="ngModel" type="number" placeholder="coupon id" [(ngModel)]="couponId" name="couponId"><br>
+    <span *ngIf="couponIdInfo.errors?.required && couponIdInfo.invalid && couponIdInfo.touched">Missing couponId</span>
+    <span *ngIf="couponIdInfo.errors?.pattern && couponIdInfo.invalid && couponIdInfo.touched">invalid couponId</span>
+    <br><br>
+
+    <button [disabled]="formInfo.form.invalid" class="btn btn-primary" (click)="purchaseCoupon()">Purchase now</button>
+</form>

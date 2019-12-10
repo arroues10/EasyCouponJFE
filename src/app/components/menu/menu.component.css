@@ -1,0 +1,12 @@
+a {
+    color: blue;
+    font-size: small;
+    font-family: Arial;
+    display: block;
+    margin-top: 20px;
+}
+
+.active {
+    color: purple;
+    font-weight: bold;
+}

@@ -1,0 +1,35 @@
+<h1>Sign in</h1><br><br>
+<form #formInfo="ngForm">
+    <input required pattern="^[a-zA-Z].+$" class="form-control" #userInfo="ngModel" type="text" placeholder="user"
+        [(ngModel)]="user" name="user"><br>
+    <span *ngIf="userInfo.errors?.required && userInfo.invalid && userInfo.touched">Missing user</span>
+    <span *ngIf="userInfo.errors?.pattern && userInfo.invalid && userInfo.touched">invalid user</span>
+    <br><br>
+    <input required class="form-control" #passwordInfo="ngModel" type="password" placeholder="password" [(ngModel)]="password"
+        name="password"><br>
+        <span *ngIf="passwordInfo.errors?.required && passwordInfo.invalid && passwordInfo.touched">Missing password</span>
+        <br><br>
+
+
+    <div class="custom-control custom-radio">
+        <input #loginTypeInfo="ngModel" type="radio" class="custom-control-input" id="item1" [(ngModel)]="loginType"
+            name="ADMIN" value="ADMIN">
+        <label class="custom-control-label" for="item1">Admin</label>
+    </div>&nbsp;&nbsp;
+
+    <div class="custom-control custom-radio">
+        <input #loginTypeInfo="ngModel" type="radio" class="custom-control-input" id="item2" [(ngModel)]="loginType"
+            name="COMPANY" value="COMPANY">
+        <label class="custom-control-label" for="item2">Company</label>
+    </div>&nbsp;&nbsp;
+
+    <div class="custom-control custom-radio">
+        <input #loginTypeInfo="ngModel" type="radio" class="custom-control-input" id="item3" [(ngModel)]="loginType"
+            name="CUSTOMER" value="CUSTOMER">
+        <label class="custom-control-label" for="item3">Customer</label>
+    </div><br><br>
+
+
+
+    <button [disabled]="formInfo.form.invalid" (click)="signIn()" class="btn btn-primary">connect</button>
+</form>

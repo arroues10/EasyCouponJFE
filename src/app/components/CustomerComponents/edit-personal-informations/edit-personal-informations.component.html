@@ -1,0 +1,18 @@
+<a class="topRight" routerLink="/customer-page"><img width=50px src="/assets/images/logoBack.png"></a>
+
+id: {{customer.id}} <br>
+name: {{customer.name}} <br>
+password: {{customer.password}} <br><br>
+
+<form #formInfo="ngForm">
+    <input required pattern="^[a-zA-Z].+$" class="form-control" #nameInfo="ngModel" type="text" placeholder="new name" [(ngModel)]="newCustomer.name" name="name"><br>
+    <span *ngIf="nameInfo.errors?.required && nameInfo.invalid && nameInfo.touched">Missing name</span>
+    <span *ngIf="nameInfo.errors?.pattern && nameInfo.invalid && nameInfo.touched">invalid name</span>
+    <br><br>
+
+    <input required class="form-control" #passwordInfo="ngModel" type="text" placeholder="new password" [(ngModel)]="newCustomer.password" name="password"><br>
+    <span *ngIf="passwordInfo.errors?.required && passwordInfo.invalid && passwordInfo.touched">Missing password</span>
+    <br><br>
+
+    <button [disabled]="formInfo.form.invalid" class="btn btn-primary" (click)="updateCustomer()">update</button>
+</form>

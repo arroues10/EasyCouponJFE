@@ -1,0 +1,23 @@
+<a class="topRight" routerLink="/admin"><img width=50px src="/assets/images/logoBack.png"></a><br><br>
+<h1>Create new Customer</h1><br>
+<form #formInfo="ngForm">
+
+    <!-- <input required pattern="^\d+$" class="form-control" #idInfo="ngModel" type="number" placeholder="id" [(ngModel)]="customer.id" name="id"><br>
+    <span *ngIf="idInfo.errors?.required && idInfo.invalid && idInfo.touched">Missing id</span>
+    <span *ngIf="idInfo.errors?.pattern && idInfo.invalid && idInfo.touched">invalid id</span>
+    <br><br> -->
+
+    <input required pattern="^[a-zA-Z].+$" class="form-control" #nameInfo="ngModel" type="text" placeholder="name" [(ngModel)]="customer.name" name="name"><br>
+    <span *ngIf="nameInfo.errors?.required && nameInfo.invalid && nameInfo.touched">Missing name</span>
+    <span *ngIf="nameInfo.errors?.pattern && nameInfo.invalid && nameInfo.touched">invalid name</span>
+    <br><br>
+
+    <input required class="form-control" #passwordInfo="ngModel" type="text" placeholder="password" [(ngModel)]="customer.password" name="password"><br>
+    <span *ngIf="passwordInfo.errors?.required && passwordInfo.invalid && passwordInfo.touched">Missing password</span>
+    <br><br>
+
+   
+    <button [disabled]="formInfo.form.invalid" (click)="createCustomer()" class="btn btn-primary">create</button>
+</form>
+
+

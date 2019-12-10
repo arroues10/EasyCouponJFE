@@ -1,0 +1,21 @@
+<a class="topRight" routerLink="/admin"><img width=50px src="/assets/images/logoBack.png"></a>
+<h1>All Companies</h1>
+<div>
+        <h1 *ngIf="!allCompanies"><img src="/assets/images/gifLoading.txt"></h1>
+    <table *ngIf="allCompanies" class="table table-dark">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>password</th>
+            <th>email</th>
+            <th>delete</th>
+        </tr>
+        <tr *ngFor="let c of allCompanies">
+            <td>{{c.id}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.password}}</td>
+            <td>{{c.email}}</td>
+            <td><button class="btn btn-danger" (click)="deleteCompany(c.id)">delete</button></td>
+        </tr>
+    </table>
+</div>

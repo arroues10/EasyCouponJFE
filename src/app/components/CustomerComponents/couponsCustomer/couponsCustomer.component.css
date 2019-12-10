@@ -1,0 +1,13 @@
+div {
+    height: 88.5%;
+    overflow: auto;
+}
+
+table{
+    margin: auto;
+}
+
+.img1{
+    width: 90px;
+    height: 60px;
+}

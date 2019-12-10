@@ -1,0 +1,25 @@
+<a class="topRight" routerLink="/admin"><img width=50px src="/assets/images/logoBack.png"></a><br><br>
+<h1>Create new Company</h1><br>
+
+<form #formInfo="ngForm">
+
+    <input required pattern="^[a-zA-Z].+$" class="form-control" #nameInfo="ngModel" type="text" placeholder="name"
+        [(ngModel)]="company.name" name="name"><br>
+    <span *ngIf="nameInfo.errors?.required && nameInfo.invalid && nameInfo.touched">Missing name</span>
+    <span *ngIf="nameInfo.errors?.pattern && nameInfo.invalid && nameInfo.touched">invalid name</span>
+    <br><br>
+
+    <input required pattern="^[a-z0-9].+@[a-z0-9].+\.[a-z].+$" class="form-control"
+        #emailInfo="ngModel" type="text" placeholder="email" [(ngModel)]="company.email" name="email"><br>
+    <span *ngIf="emailInfo.errors?.required && emailInfo.invalid && emailInfo.touched">Missing email</span>
+    <span *ngIf="emailInfo.errors?.pattern && emailInfo.invalid && emailInfo.touched">invalid email</span>
+    <br><br>
+
+    <input required class="form-control" #passwordInfo="ngModel" type="text" placeholder="password"
+        [(ngModel)]="company.password" name="password"><br>
+    <span *ngIf="passwordInfo.errors?.required && passwordInfo.invalid && passwordInfo.touched">Missing password</span>
+    <br><br>
+
+
+    <button [disabled]="formInfo.form.invalid" (click)="createCompany()" class="btn btn-primary">create</button>
+</form>

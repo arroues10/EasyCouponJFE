@@ -1,0 +1,10 @@
+input {
+	display: inline-block;
+    width: 500px;
+}
+
+.topRight{
+    position: absolute;
+    top: 20px;
+    left: 200px;
+}

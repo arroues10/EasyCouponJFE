@@ -1,0 +1,76 @@
+<div>
+        <h1 *ngIf="!companyCoupons"><img src="/assets/images/gifLoading.txt"></h1>
+    <table *ngIf="companyCoupons" class="table table-striped table-dark">
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>start date</th>
+            <th>end date</th>
+            <th>category</th>
+            <th>amount</th>
+            <th>message</th>
+            <th>price</th>
+            <th>imageURL</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+        <tr *ngFor="let c of companyCoupons">
+            <td>{{c.id}}</td>
+            <td>{{c.title}}</td>
+            <td>{{c.startDate | localDate | date: 'mediumDate'}}</td>
+            <td>{{c.endDate | localDate | date: 'mediumDate'}}</td>
+            <td>{{c.category}}</td>
+            <td>{{c.amount}}</td>
+            <td>{{c.message}}</td>
+            <td>{{c.price}}</td>
+            <td><img class="img1" src="{{c.imageURL}}"></td>
+            <td><button class="btn btn-warning" (click)="edit(c)">edit</button></td>
+            <td><button class="btn btn-danger" (click)="deleteCoupon(c.id)">delete</button></td>
+        </tr>
+    </table>
+
+
+<form class="form2" #formInfo="ngForm" *ngIf="editCouponButton">
+
+        <input class="form-control" required pattern="^[a-zA-Z].+$" #titleInfo="ngModel" type="text" placeholder="title" [(ngModel)]="coupon.title" name="title"><br>
+    <span *ngIf="titleInfo.errors?.required && titleInfo.invalid && titleInfo.touched">Missing title</span>
+    <span *ngIf="titleInfo.errors?.pattern && titleInfo.invalid && titleInfo.touched">invalid title</span>
+    <br><br>
+
+    <input class="form-control" required #startDateInfo="ngModel" type="date" placeholder="start date" [(ngModel)]="coupon.startDate" name="startDate"><br>
+    <span *ngIf="startDateInfo.errors?.required && startDateInfo.invalid && startDateInfo.touched">Missing start date</span>
+    <br><br>
+
+    <input class="form-control" required #endDateInfo="ngModel" type="date" placeholder="end date" [(ngModel)]="coupon.endDate" name="endDate"><br>
+    <span *ngIf="endDateInfo.errors?.required && endDateInfo.invalid && endDateInfo.touched">Missing end date</span>
+    <br><br>
+
+    <input class="form-control" required pattern="^\d+$" #categoryInfo="ngModel" type="number" placeholder="category" [(ngModel)]="coupon.category" name="category"><br>
+    <span *ngIf="categoryInfo.errors?.required && categoryInfo.invalid && categoryInfo.touched">Missing category</span>
+    <span *ngIf="categoryInfo.errors?.pattern && categoryInfo.invalid && categoryInfo.touched">invalid category</span>
+    <br><br>
+
+
+    <input class="form-control" required pattern="^\d+$" #amountInfo="ngModel" type="number" placeholder="amount" [(ngModel)]="coupon.amount" name="amount"><br>
+    <span *ngIf="amountInfo.errors?.required && amountInfo.invalid && amountInfo.touched">Missing amount</span>
+    <span *ngIf="amountInfo.errors?.pattern && amountInfo.invalid && amountInfo.touched">invalid amount</span>
+    <br><br>
+
+    <input class="form-control" required pattern="^[a-zA-Z].+$" #descriptionInfo="ngModel" type="text" placeholder="description" [(ngModel)]="coupon.message" name="description"><br>
+    <span *ngIf="descriptionInfo.errors?.required && descriptionInfo.invalid && descriptionInfo.touched">Missing description</span>
+    <span *ngIf="descriptionInfo.errors?.pattern && descriptionInfo.invalid && descriptionInfo.touched">invalid description</span>
+    <br><br>
+
+    <input class="form-control" required pattern="^\d+$" #priceInfo="ngModel" type="number" placeholder="price" [(ngModel)]="coupon.price" name="price"><br>
+    <span *ngIf="priceInfo.errors?.required && priceInfo.invalid && priceInfo.touched">Missing price</span>
+    <span *ngIf="priceInfo.errors?.pattern && priceInfo.invalid && priceInfo.touched">invalid price</span>
+    <br><br>
+
+    <input class="form-control" required #imageInfo="ngModel" type="text" placeholder="image" [(ngModel)]="coupon.imageURL" name="image"><br>
+    <span *ngIf="imageInfo.errors?.required && imageInfo.invalid && imageInfo.touched">Missing imageURL</span>
+    <br><br>
+
+    
+    <button [disabled]="formInfo.form.invalid" (click)="update()" class="btn btn-primary">update</button>
+      </form>
+    </div>

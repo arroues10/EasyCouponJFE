@@ -1,0 +1,15 @@
+div {
+    height: 88.5%;
+    overflow: auto;
+}
+
+.topRight{
+    position: absolute;
+    top: 2px;
+    left: 200px;
+}
+
+.img1{
+    width: 90px;
+    height: 60px;
+}

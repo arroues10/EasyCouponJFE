@@ -1,0 +1,29 @@
+<a class="topRight" routerLink="/admin"><img width=50px src="/assets/images/logoBack.png"></a>
+<h1>All Coupons</h1>
+<div>
+    <h1 *ngIf="!allCoupons"><img src="/assets/images/gifLoading.txt"></h1>
+    <table *ngIf="allCoupons" class="table table-dark">
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>start date</th>
+            <th>end date</th>
+            <th>category</th>
+            <th>amount</th>
+            <th>message</th>
+            <th>price</th>
+            <th>image</th>
+        </tr>
+        <tr *ngFor="let c of allCoupons">
+            <td>{{c.id}}</td>
+            <td>{{c.title}}</td>
+            <td>{{c.startDate | localDate | date: 'mediumDate'}}</td>
+            <td>{{c.endDate | localDate | date: 'mediumDate'}}</td>
+            <td>{{c.category    }}</td>
+            <td>{{c.amount}}</td>
+            <td>{{c.message}}</td>
+            <td>{{c.price}}</td>
+            <td><img class="img1" src="{{c.imageURL}}" alt="" ></td>
+        </tr>
+    </table>
+</div>
